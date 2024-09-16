@@ -1,8 +1,5 @@
 let choices = ["rock", "paper", "scissors"];
 
-let computerScore = 0;
-let humanScore = 0;
-
 function getComputerChoice() {
     // Get computer choice
     //  - Use Math.random() to select "rock", "paper" or "scissors"
@@ -39,48 +36,66 @@ function playRound(computerChoice, humanChoice) {
     switch(computerChoice) {
         case humanChoice:
             console.log(`Thats a draw!`);
-            break;
+            return "draw";
 
         case "rock":
             switch(humanChoice) {
                 case "paper":
-                    humanScore++;
                     console.log(`You win!. ${humanChoice} beats ${computerChoice}.`);
-                    break;
+                    return "human";
                 case "scissors":
-                    computerScore++;
                     console.log(`You lose!. ${computerChoice} beats ${humanChoice}.`);
-                    break;
+                    return "computer";
             }
             break;
 
         case "scissors":
             switch(humanChoice) {
                 case "paper":
-                    computerScore++;
                     console.log(`You lose!. ${computerChoice} beats ${humanChoice}.`);
-                    break;
+                    return "computer";
                 case "rock":
-                    humanScore++;
                     console.log(`You win!. ${humanChoice} beats ${computerChoice}.`);
-                    break;
+                    return "human";
             }
             break;
 
         case "paper":
             switch(humanChoice) {
                 case "scissors":
-                    humanScore++;
                     console.log(`You win!. ${humanChoice} beats ${computerChoice}.`);
-                    break;
+                    return "human";
                 case "rock":
-                    computerScore++;
                     console.log(`You lose!. ${computerChoice} beats ${humanChoice}.`);
-                    break;
+                    return "computer";
             }
             break;
 
     }
 }
 
-playRound(getComputerChoice(), getHumanChoice());
+
+function playGame() {
+    let computerScore = 0;
+    let humanScore = 0;
+    let winner;
+    for (let i = 0; i < 5; i++) {
+        winner = playRound(getComputerChoice(), getHumanChoice());
+        if (winner === "human") {
+            humanScore++;
+        } else if (winner === "computer") {
+            computerScore++;
+        }
+    }
+
+    console.log(`Your score: ${humanScore}\nComputer score: ${computerScore}`);
+    if (humanScore === computerScore) {
+        console.log("Thats a draw...");
+    } else if (humanScore > computerScore) {
+        console.log("You win!");
+    } else {
+        console.log("You lose...");
+    }
+}
+
+playGame();
