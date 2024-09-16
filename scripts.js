@@ -1,5 +1,8 @@
 let choices = ["rock", "paper", "scissors"];
 
+let computerScore = 0;
+let humanScore = 0;
+
 function getComputerChoice() {
     // Get computer choice
     //  - Use Math.random() to select "rock", "paper" or "scissors"
@@ -31,3 +34,53 @@ function getHumanChoice() {
     }
     return humanChoice;
 }
+
+function playRound(computerChoice, humanChoice) {
+    switch(computerChoice) {
+        case humanChoice:
+            console.log(`Thats a draw!`);
+            break;
+
+        case "rock":
+            switch(humanChoice) {
+                case "paper":
+                    humanScore++;
+                    console.log(`You win!. ${humanChoice} beats ${computerChoice}.`);
+                    break;
+                case "scissors":
+                    computerScore++;
+                    console.log(`You lose!. ${computerChoice} beats ${humanChoice}.`);
+                    break;
+            }
+            break;
+
+        case "scissors":
+            switch(humanChoice) {
+                case "paper":
+                    computerScore++;
+                    console.log(`You lose!. ${computerChoice} beats ${humanChoice}.`);
+                    break;
+                case "rock":
+                    humanScore++;
+                    console.log(`You win!. ${humanChoice} beats ${computerChoice}.`);
+                    break;
+            }
+            break;
+
+        case "paper":
+            switch(humanChoice) {
+                case "scissors":
+                    humanScore++;
+                    console.log(`You win!. ${humanChoice} beats ${computerChoice}.`);
+                    break;
+                case "rock":
+                    computerScore++;
+                    console.log(`You lose!. ${computerChoice} beats ${humanChoice}.`);
+                    break;
+            }
+            break;
+
+    }
+}
+
+playRound(getComputerChoice(), getHumanChoice());
