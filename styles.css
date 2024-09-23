@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+#buttonContainer {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#buttonContainer button {
+    min-width: 32%;
+    flex: 1;
+    font-size: 1.5rem;
+    padding: 2em;
+    border: solid 2px black;
+    border-radius: 1rem;
+    background-color: darkslategrey;
+    color: white;
+    font-weight: 900;
+}
+
+#buttonContainer button:active {
+    background-color: rgb(34, 58, 58);
+}
+
+#scores {
+    border: solid 2px black;
+    border-radius: 2em;
+    padding: 1em;
+}
